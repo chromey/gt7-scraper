@@ -8,6 +8,19 @@
 
 ## Usage
 
+### Scraping Cars
+
+This has to be done everytime new cars are added to the roster (and used in a TT).
+Open a terminal / command prompt in the project directory, then execute
+
+```bash
+node cars.js
+```
+
+This will generate a `cars.json` file in the project directory that you can expect.
+
+### Scraping Events
+
 Open a terminal / command prompt in the project directory, then execute
 
 ```bash
