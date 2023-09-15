@@ -7,6 +7,12 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
   await promises.unlink(outputFile).catch(() => {});
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet("Sheet1");
+  let cars = {};
+  try {
+    cars = require("./cars.json");
+  } catch (e) {
+    console.log("No cars.json found, skipping car name lookup");
+  }
   worksheet.columns = [
     ["rank", 10],
     ["drivers_name", 20],
@@ -16,6 +22,7 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
     ["drivers_DR", 10],
     ["drivers_SR", 10],
     ["drivers_country", 10],
+    ["car", 30],
   ].map(([header, width]) => ({ header, key: header, width }));
 
   worksheet.getRow(1).font = { bold: true };
@@ -39,6 +46,7 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
           entry.user.sportsmanship_rating - 1
         ],
         drivers_country: entry.user.country_code,
+        car: cars[entry.ranking_stats.car_code] || entry.ranking_stats.car_code,
       };
 
       row.getCell("drivers_time").numFmt = "mm:ss.000";
