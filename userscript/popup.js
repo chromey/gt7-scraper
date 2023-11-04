@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GT7 TT Statistics
 // @namespace    http://www.romeyke.de
-// @version      1.1
+// @version      1.2
 // @description  Displays a popup with additional statistics for GT7 time trials
 // @match        https://www.gran-turismo.com/*/gt7/sportmode/*
 // @grant        none
@@ -204,10 +204,10 @@ async function getRanking(board_id, targetScore, lastPageNumber, pages) {
     const lastScore =
       response.result.list[response.result.list.length - 1].score;
     if (targetScore < firstScore) {
-      upperBound = pageNumber - 1;
+      upperBound = Math.max(pageNumber - 1, lowerBound);
     }
     if (targetScore > lastScore) {
-      lowerBound = pageNumber + 1;
+      lowerBound = Math.min(pageNumber + 1, upperBound);
     }
     if (targetScore >= firstScore && targetScore <= lastScore) {
       ranking = response.result.list.find((item) => item.score >= targetScore);
