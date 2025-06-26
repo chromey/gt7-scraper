@@ -23,7 +23,12 @@ async function scrapeEvent(
 
 async function fetchAllPages(eventNumber) {
   const params = await fetch(
-    `https://static.gt7.game.gran-turismo.com/event/params/${eventNumber}.json`
+    `https://web-api.gt7.game.gran-turismo.com/event/get_parameter`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event_id: +eventNumber }),
+    }
   ).then((response) => response.json());
 
   const board_id = params.result.online.ranking_id;
