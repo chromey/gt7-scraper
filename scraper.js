@@ -2,34 +2,41 @@ const args = require("minimist")(process.argv.slice(2));
 const { range } = require("lodash");
 const pLimit = require("p-limit");
 const { writeToOutputFile } = require("./report");
+const { writeRawJson } = require("./raw-json-report");
 
 if (!args.event) {
   console.log(
-    "Usage: node scraper.js --event={eventNumber} --outputFile={outputFile}"
+    "Usage: node . --event={eventNumber} --outputFile={outputFile} --format={xlsx|json}"
   );
   return;
 } else {
-  scrapeEvent(args.event, args.outputFile);
+  scrapeEvents(args);
+}
+
+async function scrapeEvents(args) {
+  const events = ("" + args.event).split(",");
+  for (const event of events) {
+    await scrapeEvent(event, args.outputFile, args.format);
+  }
 }
 
 async function scrapeEvent(
   eventNumber,
-  outputFile = `event_${eventNumber}.xlsx`
+  outputFile = `event_${eventNumber}.xlsx`,
+  format = "xlsx"
 ) {
+  console.log(`Scraping event ${eventNumber}`);
   const allPages = await fetchAllPages(eventNumber);
-  await writeToOutputFile(allPages, outputFile);
+  if (format === "json") {
+    await writeRawJson(allPages, eventNumber);
+  } else {
+    await writeToOutputFile(allPages, outputFile);
+  }
   console.log("Done");
 }
 
 async function fetchAllPages(eventNumber) {
-  const params = await fetch(
-    `https://web-api.gt7.game.gran-turismo.com/event/get_parameter`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event_id: +eventNumber }),
-    }
-  ).then((response) => response.json());
+  const params = await getParams(eventNumber);
 
   const board_id = params.result.online.ranking_id;
   const firstPage = await getPage(board_id, 0);
@@ -56,6 +63,30 @@ async function fetchAllPages(eventNumber) {
   return [firstPage, ...remainingPages];
 }
 
+function getParams(eventNumber) {
+  return fetch(
+    `https://web-api.gt7.game.gran-turismo.com/event/get_parameter`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event_id: +eventNumber }),
+    }
+  ).then((res) => {
+    const status = res.status;
+    if ([429, 403].includes(status)) {
+      const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
+      console.log(
+        `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`
+      );
+      return new Promise((resolve) =>
+        setTimeout(resolve, waitSeconds * 1000)
+      ).then(() => getPage(board_id, page));
+    }
+    const json = res.json();
+    return json;
+  });
+}
+
 function getPage(board_id, page) {
   return fetch(
     "https://web-api.gt7.game.gran-turismo.com/ranking/get_list_by_page",
@@ -66,8 +97,8 @@ function getPage(board_id, page) {
     }
   ).then((res) => {
     const status = res.status;
-    if (status === 429) {
-      const waitSeconds = res.headers.get("x-ratelimit-reset");
+    if ([429, 403].includes(status)) {
+      const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
       console.log(
         `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`
       );
