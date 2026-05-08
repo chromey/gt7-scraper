@@ -26,7 +26,8 @@ async function scrapeEvent(
   format = "xlsx",
 ) {
   console.log(`Scraping event ${eventNumber}`);
-  const allPages = await fetchAllPages(eventNumber);
+  const members = require("./leaderboard-members.json");
+  const allPages = await fetchAllPages(eventNumber, members);
   if (format === "json") {
     await writeRawJson(allPages, eventNumber);
   } else {
@@ -35,10 +36,10 @@ async function scrapeEvent(
   console.log("Done");
 }
 
-async function fetchAllPages(eventNumber) {
+async function fetchAllPages(eventNumber, members) {
   const params = await getParams(eventNumber);
 
-  const firstPage = await getPage(params.id, 1);
+  const firstPage = await getPage(params.id, 1, members);
   const totalPages = firstPage.payload.pagination.total;
   const now = new Date();
   const limit = pLimit(1);
@@ -46,7 +47,7 @@ async function fetchAllPages(eventNumber) {
   const remainingPages = await Promise.all(
     range(2, totalPages + 1).map((pageNumber) =>
       limit(() =>
-        getPage(params.id, pageNumber).then((page) => {
+        getPage(params.id, pageNumber, members).then((page) => {
           count++;
           process.stdout.write(
             `Fetching pages: ${Math.floor((count / totalPages) * 100)}% \r`,
@@ -83,8 +84,8 @@ async function getParams(eventNumber) {
   return params;
 }
 
-async function getPage(eventId, page) {
-  return fetch("https://admin.dg-edge.com/api/b.events.retrieveRanking", {
+function getPlayerDetails(psnId) {
+  return fetch("https://admin.dg-edge.com/api/b.players.retrievePlayer", {
     method: "POST",
     headers: {
       origin: "https://www.dg-edge.com",
@@ -92,21 +93,45 @@ async function getPage(eventId, page) {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      eventId: "" + eventId,
-      page,
+      onlineId: psnId,
     }),
-  }).then((res) => {
-    const status = res.status;
-    if ([429, 403].includes(status)) {
-      const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
-      console.log(
-        `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`,
-      );
-      return new Promise((resolve) =>
-        setTimeout(resolve, waitSeconds * 1000),
-      ).then(() => getPage(board_id, page));
-    }
-    const json = res.json();
-    return json;
-  });
+  }).then((res) => res.json());
+}
+
+async function getPage(eventId, page, members) {
+  const res = await fetch(
+    "https://admin.dg-edge.com/api/b.events.retrieveRanking",
+    {
+      method: "POST",
+      headers: {
+        origin: "https://www.dg-edge.com",
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        eventId: "" + eventId,
+        page,
+      }),
+    },
+  );
+  const status = res.status;
+  if ([429, 403].includes(status)) {
+    const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
+    console.log(
+      `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`,
+    );
+    return new Promise((resolve) =>
+      setTimeout(resolve, waitSeconds * 1000),
+    ).then(() => getPage(board_id, page));
+  }
+  const json = await res.json();
+  json.payload.list
+    .map((e) => e.player)
+    .filter((player) => members.includes(player.nickname))
+    .forEach(async (player) => {
+      const playerDetails = await getPlayerDetails(player.onlineId);
+      player.externalId = playerDetails.payload.externalId;
+      player.profileLink = playerDetails.payload.profileLink;
+    });
+  return json;
 }

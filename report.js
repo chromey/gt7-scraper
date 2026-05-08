@@ -37,7 +37,7 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
         rank: entry.position,
         drivers_name: entry.player.nickname,
         drivers_online_id: entry.player.onlineId,
-        drivers_name_url: "",
+        drivers_name_url: entry.player.profileLink || "",
         drivers_time: entry.timeMS / 86400000,
         drivers_DR: entry.player.DR,
         drivers_SR: entry.player.SR,
