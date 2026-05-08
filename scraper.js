@@ -6,7 +6,7 @@ const { writeRawJson } = require("./raw-json-report");
 
 if (!args.event) {
   console.log(
-    "Usage: node . --event={eventNumber} --outputFile={outputFile} --format={xlsx|json}"
+    "Usage: node . --event={eventNumber} --outputFile={outputFile} --format={xlsx|json}",
   );
   return;
 } else {
@@ -23,7 +23,7 @@ async function scrapeEvents(args) {
 async function scrapeEvent(
   eventNumber,
   outputFile = `event_${eventNumber}.xlsx`,
-  format = "xlsx"
+  format = "xlsx",
 ) {
   console.log(`Scraping event ${eventNumber}`);
   const allPages = await fetchAllPages(eventNumber);
@@ -38,72 +38,72 @@ async function scrapeEvent(
 async function fetchAllPages(eventNumber) {
   const params = await getParams(eventNumber);
 
-  const board_id = params.result.online.ranking_id;
-  const firstPage = await getPage(board_id, 0);
-  const totalPages = firstPage.result.total;
+  const firstPage = await getPage(params.id, 1);
+  const totalPages = firstPage.payload.pagination.total;
   const now = new Date();
   const limit = pLimit(1);
   let count = 0;
   const remainingPages = await Promise.all(
-    range(1, totalPages).map((pageNumber) =>
+    range(2, totalPages + 1).map((pageNumber) =>
       limit(() =>
-        getPage(board_id, pageNumber).then((page) => {
+        getPage(params.id, pageNumber).then((page) => {
           count++;
           process.stdout.write(
-            `Fetching pages: ${Math.floor(
-              (count / (totalPages - 1)) * 100
-            )}% \r`
+            `Fetching pages: ${Math.floor((count / totalPages) * 100)}% \r`,
           );
           return page;
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
   console.log("\nAll pages fetched in ", (new Date() - now) / 1000, "s");
   return [firstPage, ...remainingPages];
 }
 
-function getParams(eventNumber) {
-  return fetch(
-    `https://web-api.gt7.game.gran-turismo.com/event/get_parameter`,
+async function getParams(eventNumber) {
+  const recentDgEventsResult = await fetch(
+    "https://admin.dg-edge.com/api/b.events.retrieveEvents",
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event_id: +eventNumber }),
-    }
-  ).then((res) => {
-    const status = res.status;
-    if ([429, 403].includes(status)) {
-      const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
-      console.log(
-        `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`
-      );
-      return new Promise((resolve) =>
-        setTimeout(resolve, waitSeconds * 1000)
-      ).then(() => getPage(board_id, page));
-    }
-    const json = res.json();
-    return json;
-  });
+      headers: {
+        origin: "https://www.dg-edge.com",
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        filters: { type: "TT", trackId: "0", carType: "0", carId: "0" },
+        page: 1,
+      }),
+    },
+  );
+  const recentDgEvents = await recentDgEventsResult.json();
+  const params = recentDgEvents.payload.list.find(
+    (e) => e.externalId === 1000000 + +eventNumber,
+  );
+  return params;
 }
 
-function getPage(board_id, page) {
-  return fetch(
-    "https://web-api.gt7.game.gran-turismo.com/ranking/get_list_by_page",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ board_id, page }),
-    }
-  ).then((res) => {
+async function getPage(eventId, page) {
+  return fetch("https://admin.dg-edge.com/api/b.events.retrieveRanking", {
+    method: "POST",
+    headers: {
+      origin: "https://www.dg-edge.com",
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      eventId: "" + eventId,
+      page,
+    }),
+  }).then((res) => {
     const status = res.status;
     if ([429, 403].includes(status)) {
       const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
       console.log(
-        `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`
+        `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`,
       );
       return new Promise((resolve) =>
-        setTimeout(resolve, waitSeconds * 1000)
+        setTimeout(resolve, waitSeconds * 1000),
       ).then(() => getPage(board_id, page));
     }
     const json = res.json();

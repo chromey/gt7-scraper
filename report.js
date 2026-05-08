@@ -28,25 +28,21 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
   worksheet.getRow(1).font = { bold: true };
   let i = 2;
   for (const page of allPages) {
-    if (!page.result?.list) {
+    if (!page.payload?.list) {
       continue;
     }
-    for (const entry of page.result.list) {
+    for (const entry of page.payload.list) {
       const row = worksheet.getRow(i++);
       row.values = {
-        rank: entry.display_rank,
-        drivers_name: entry.user.nick_name,
-        drivers_online_id: entry.user.np_online_id,
-        drivers_name_url: `https://www.gran-turismo.com/gb/gt7/user/mymenu/${entry.user.user_id}/profile`,
-        drivers_time: entry.score / 86400000,
-        drivers_DR: ["E", "D", "C", "B", "A", "A+", "S"][
-          entry.user.driver_rating - 1
-        ],
-        drivers_SR: ["E", "D", "C", "B", "A", "S"][
-          entry.user.sportsmanship_rating - 1
-        ],
-        drivers_country: entry.user.country_code,
-        car: cars[entry.ranking_stats.car_code] || entry.ranking_stats.car_code,
+        rank: entry.position,
+        drivers_name: entry.player.nickname,
+        drivers_online_id: entry.player.onlineId,
+        drivers_name_url: "",
+        drivers_time: entry.timeMS / 86400000,
+        drivers_DR: entry.player.DR,
+        drivers_SR: entry.player.SR,
+        drivers_country: entry.player.countryCode,
+        car: entry.car.brand + " " + entry.car.name,
       };
 
       row.getCell("drivers_time").numFmt = "mm:ss.000";
