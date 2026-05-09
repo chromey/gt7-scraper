@@ -122,7 +122,7 @@ async function getPage(eventId, page, members) {
     );
     return new Promise((resolve) =>
       setTimeout(resolve, waitSeconds * 1000),
-    ).then(() => getPage(board_id, page));
+    ).then(() => getPage(eventId, page, members));
   }
   const json = await res.json();
   // debugging
