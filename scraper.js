@@ -116,7 +116,7 @@ async function getPage(eventId, page, members) {
   );
   const status = res.status;
   if ([429, 403].includes(status)) {
-    const waitSeconds = res.headers.get("x-ratelimit-reset") || 120;
+    const waitSeconds = res.headers.get("retry-after") || 120;
     console.log(
       `\nRate limit exceeded, have to wait for ${waitSeconds} seconds`,
     );
