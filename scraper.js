@@ -125,6 +125,13 @@ async function getPage(eventId, page, members) {
     ).then(() => getPage(board_id, page));
   }
   const json = await res.json();
+  // debugging
+  if (!json?.payload?.list?.length) {
+    console.log("Empty page detected: ", page);
+    console.log("HTTP status: ", status);
+    console.log("Response: ", JSON.stringify(json, null, 2));
+  }
+  // end of debugging
   json.payload.list
     .map((e) => e.player)
     .filter((player) => members.includes(player.nickname))
