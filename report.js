@@ -3,6 +3,7 @@ const { Workbook, Worksheet } = require("exceljs");
 const { promises } = require("fs");
 
 exports.writeToOutputFile = async function (allPages, outputFile) {
+  const members = require("./leaderboard-members.json");
   console.log(`Writing to file ${outputFile}`);
   await promises.unlink(outputFile).catch(() => {});
   const workbook = new Workbook();
@@ -37,7 +38,7 @@ exports.writeToOutputFile = async function (allPages, outputFile) {
         rank: entry.position,
         drivers_name: entry.player.nickname,
         drivers_online_id: entry.player.onlineId,
-        drivers_name_url: entry.player.profileLink || "",
+        drivers_name_url: members.find((m) => m.nickName === entry.player.nickname)?.profileUrl || "",
         drivers_time: entry.timeMS / 86400000,
         drivers_DR: entry.player.DR,
         drivers_SR: entry.player.SR,

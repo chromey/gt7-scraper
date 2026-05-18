@@ -1,101 +1,366 @@
-[
-  "A. McIntosh",
-  "Adrián",
-  "AE-Drifting",
-  "All_GTs_Platinum",
-  "B B R",
-  "Bacchanalist",
-  "Bandit",
-  "Benjoi",
-  "BigFluffy888",
-  "blip",
-  "Cavalino",
-  "Chall",
-  "Cheesemonger",
-  "Cheetack",
-  "CheetackGT",
-  "Ciaran",
-  "Cosmic",
-  "crome",
-  "Daabulls",
-  "DDK_Racing",
-  "DirtyHarry",
-  "DolphDrago",
-  "Dr. K",
-  "Dredge_Dragline",
-  "E.Johansson",
-  "eggmann",
-  "ElectricNaz",
-  "Exosum",
-  "FERON",
-  "Freestyler",
-  "Glen",
-  "GlockPants",
-  "Gomario JSP",
-  "GR Racing -ROB",
-  "GT 1-7",
-  "GTP_CarlosF",
-  "gtp_jimihemmy",
-  "GTP_Luv2drive",
-  "Gustavo_85",
-  "H. Aslam",
-  "half_sourly",
-  "Hammer",
-  "holl01",
-  "Homestead",
-  "HRC Rolls",
-  "IIIIISLY78IIIII",
-  "ikon313",
-  "J. Duarte",
-  "JamCar0ne",
-  "Jessie",
-  "Jets",
-  "jimihemmy17",
-  "JRFrench",
-  "KAlex",
-  "Ken",
-  "King Jinx",
-  "Kowalski",
-  "Lomic",
-  "Manou001",
-  "Matt Marrod",
-  "Metentso VR YT",
-  "Mieze",
-  "Mikey_C",
-  "Mistah_MCA",
-  "Moonpotter",
-  "MP81",
-  "Nebu",
-  "Nick",
-  "NicoGmbh",
-  "Norbsthebald",
-  "nostradavor2",
-  "Olaf",
-  "OleAtTheWheel",
-  "PillePalle",
-  "PowerJunkie",
-  "RB_Free",
-  "Regis",
-  "S.Macdonald",
-  "ScottPuss",
-  "Slowdan",
-  "Soccmals",
-  "SPDN Stefano",
-  "Speed-Damean",
-  "SPL170db",
-  "T. Gilding",
-  "The Normsk VR",
-  "The__Luke",
-  "The_Ant702",
-  "TheHun99",
-  "TheOriginalJonT",
-  "THNDR_HEEFFY",
-  "TPC_Slatanic1",
-  "Tribal Chief",
-  "Tryin'",
-  "TurboBinder",
-  "VekiG",
-  "Waxisthebest1",
-  "Wilsonson",
-  "Zevious Zoquis"
-]
+  [
+    {
+      "nickName": "A. McIntosh",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/5aea5347-3550-4352-83b9-35d1ae861de8/profile"
+    },
+    {
+      "nickName": "Adrián",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/81294282-62d3-46cb-abbc-b0fd4ec9a4e3/profile"
+    },
+    {
+      "nickName": "AdxRE",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/3363bcba-2a7a-4356-8425-3b242a3feb7f/profile"
+    },
+    {
+      "nickName": "All_GTs_Platinum",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/23baa1d5-b916-43ce-b621-85be1d200ee3/profile"
+    },
+    {
+      "nickName": "Bacchanalist",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/f7989cd6-f5cc-46fd-9528-b3ad886e864b/profile"
+    },
+    {
+      "nickName": "Bandit",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/ac1af187-637d-4ecd-a3da-11babd4a4ce3/profile"
+    },
+    {
+      "nickName": "Beardo",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/53122afb-3c29-4196-9dc5-57e4fda2adce/profile"
+    },
+    {
+      "nickName": "BigFluffy888",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/9dc03c76-47a4-4c03-a4f8-8f0f80c804e5/profile"
+    },
+    {
+      "nickName": "blip",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/8befe550-c68c-4cf8-96ab-9e4661d59327/profile"
+    },
+    {
+      "nickName": "Cavalino",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/975cb06f-6699-448a-b38d-cf576724e11e/profile"
+    },
+    {
+      "nickName": "Cheesemonger",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/51008e56-bffb-441a-b421-6b50209a2c66/profile"
+    },
+    {
+      "nickName": "Cheetack",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/6e401802-5b3f-425f-b5e8-0d4585a41bf5/profile"
+    },
+    {
+      "nickName": "CheetackGT",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/70cbb3e9-12ae-4f1f-9cb7-2bb80e18d1df/profile"
+    },
+    {
+      "nickName": "Ciaran",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/133ee64e-c4fd-46f3-bf29-25972e1e6cd2/profile"
+    },
+    {
+      "nickName": "Cosmic",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/f2a944ce-71ae-4eeb-9ed7-95e94535d9ad/profile"
+    },
+    {
+      "nickName": "crome",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/a0fc2800-2663-4525-bc95-3b617f676463/profile"
+    },
+    {
+      "nickName": "Daabulls",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/3a236363-2a66-478c-8ca1-c699bb5f9de0/profile"
+    },
+    {
+      "nickName": "Dan_tes",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/2bc8916b-3d87-4f0f-b712-f5558ace824d/profile"
+    },
+    {
+      "nickName": "DDK_Racing",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/cefc0aef-17fb-4e53-a591-7750318c4b66/profile"
+    },
+    {
+      "nickName": "DirtyHarry",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/7006ae8c-758b-4535-899a-fb3467a0bcc5/profile"
+    },
+    {
+      "nickName": "DolphDrago",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1a0e0bc9-4e88-4fda-8b38-ac83e3c9b18e/profile"
+    },
+    {
+      "nickName": "Dr. K",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/7c08fd86-19bb-4b64-afab-4446e8612702/profile"
+    },
+    {
+      "nickName": "Dredge_Dragline",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/d2e6f8e4-9baf-4659-95f1-67cef35f6e42/profile"
+    },
+    {
+      "nickName": "E.Johansson",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/d8a2d82b-1c27-4038-9fcf-f8dfc457fc0e/profile"
+    },
+    {
+      "nickName": "eggmann",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1288f263-890e-45b4-9b32-b280e1dc977e/profile"
+    },
+    {
+      "nickName": "ElectricNaz",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/e587c0d7-22b1-4b35-a35f-cbc7d2953fbe/profile"
+    },
+    {
+      "nickName": "Exosum",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/69420d63-34c9-4908-95b4-87849c417a5b/profile"
+    },
+    {
+      "nickName": "FERON",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/98d090e8-c033-497d-a420-aa728e157405/profile"
+    },
+    {
+      "nickName": "Freestyler",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/4663da3d-33f5-43d5-a029-9617c69101df/profile"
+    },
+    {
+      "nickName": "Glen",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/ece1335e-52e8-4e62-a971-1a318b0a5a93/profile"
+    },
+    {
+      "nickName": "GlockPants",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b4190306-3589-4c66-aa72-5abb9a4a8be7/profile"
+    },
+    {
+      "nickName": "Gomario JSP",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/c653e731-3109-4f04-95ac-382f5af7646e/profile"
+    },
+    {
+      "nickName": "GR Racing -ROB",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/6cb7931e-3fc6-4f58-bd0b-6f93c698a805/profile"
+    },
+    {
+      "nickName": "gtp_jimihemmy",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b292bc03-abbb-48be-adb7-4ff3424b6fcb/profile"
+    },
+    {
+      "nickName": "GTP_Luv2drive",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/660d9da8-79ff-487a-8db9-bd869c8d33e8/profile"
+    },
+    {
+      "nickName": "GTsail",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/27309156-f5c7-4314-ac24-2f2e0d1a883a/profile"
+    },
+    {
+      "nickName": "Gustavo_85",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b94da470-f63c-4abc-aa03-0d5b9c2d04bc/profile"
+    },
+    {
+      "nickName": "H. Aslam",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/21b9824b-5cdd-4edb-9f22-9ba71a98d2ba/profile"
+    },
+    {
+      "nickName": "half_sourly",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/acfa6a32-1c74-4c0b-852e-b8a1bf152d08/profile"
+    },
+    {
+      "nickName": "Hammer",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b0064f51-1a43-44d1-82fb-debf959967b1/profile"
+    },
+    {
+      "nickName": "holl01",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/22c57596-cc7c-42d7-bc7b-5b904380040e/profile"
+    },
+    {
+      "nickName": "Homestead",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/c56b0526-c23c-4fc6-9851-9bccceb06dcb/profile"
+    },
+    {
+      "nickName": "HRC Rolls",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/66b4f1f5-378d-4588-abae-7365867b827e/profile"
+    },
+    {
+      "nickName": "IIIIISLY78IIIII",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/e5afd1c1-7020-434e-be94-8e846f264fbb/profile"
+    },
+    {
+      "nickName": "JamCar0ne",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/25e7aee0-382d-40b6-90ac-5a39645e87d5/profile"
+    },
+    {
+      "nickName": "Jessie",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1302fe2b-599f-4b8d-992e-30de41ee857d/profile"
+    },
+    {
+      "nickName": "Jets",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/1f261ad8-9997-4295-81b0-e772f3074a85/profile"
+    },
+    {
+      "nickName": "jimihemmy17",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1f81321d-1a42-4455-803b-787ba979c83f/profile"
+    },
+    {
+      "nickName": "JRFrench",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/91c9efd6-9508-42c6-acf0-64ce9945fa9e/profile"
+    },
+    {
+      "nickName": "King Jinx",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/c63f02dc-b222-411f-83d9-0cb6683415f3/profile"
+    },
+    {
+      "nickName": "Kowalski",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/6082883e-2b58-40d3-9ae0-0bdb8b77f944/profile"
+    },
+    {
+      "nickName": "Lomic",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/05bcdb4f-388a-4c9d-9329-0544c2eb434d/profile"
+    },
+    {
+      "nickName": "Lukas M",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/3216fd23-7347-4713-a959-46d4a5fd3c0b/profile"
+    },
+    {
+      "nickName": "Manou001",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/5e961be3-67b6-45d4-84cc-55d73c15eb1e/profile"
+    },
+    {
+      "nickName": "Matt Marrod",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/e7b6a8ca-0388-42b7-b2d2-9cf8ab029dc8/profile"
+    },
+    {
+      "nickName": "Mikey_C",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/dc66582e-0109-4d0f-9069-aa8e80be35a0/profile"
+    },
+    {
+      "nickName": "Mistah_MCA",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/39d8d520-6631-4fa5-a248-2c095613709c/profile"
+    },
+    {
+      "nickName": "Moonpotter",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/7d1b7ccb-c523-4e95-8615-d8a4e436f581/profile"
+    },
+    {
+      "nickName": "MP81",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1e42c1b1-c9a7-4b5c-a17c-57027f144a04/profile"
+    },
+    {
+      "nickName": "MR-CERF",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1d001a5e-8728-46ad-a130-8b965ada3d75/profile"
+    },
+    {
+      "nickName": "Nick",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/f315b62d-81d8-4881-a8f9-7098fde18ae3/profile"
+    },
+    {
+      "nickName": "NicoGmbh",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/66087d95-1002-4b2f-b173-75d22f961aa4/profile"
+    },
+    {
+      "nickName": "Norbsthebald",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/77435eeb-9a1f-41c8-88e8-b2ad409ba3ae/profile"
+    },
+    {
+      "nickName": "nostradavor2",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/c84a842b-ba9d-4c52-b844-a0f52f5d0ab1/profile"
+    },
+    {
+      "nickName": "Olaf",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/25736ebe-11cc-4083-bdf3-04ce9a5d3ac3/profile"
+    },
+    {
+      "nickName": "PillePalle",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/0d764d2d-1b06-4aa9-998b-8fd7d6b81870/profile"
+    },
+    {
+      "nickName": "PiotrSnc",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/7d03643f-8501-4600-bc4d-555cd460f66a/profile"
+    },
+    {
+      "nickName": "PowerJunkie",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/9398872e-66de-420e-8e0e-492ba8a2ce1b/profile"
+    },
+    {
+      "nickName": "RB_Free",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/31cd1413-4a8a-451e-895a-38d02aa6fffe/profile"
+    },
+    {
+      "nickName": "Regis",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/96b8bb5a-8c3f-4270-a26e-d8d134af0828/profile"
+    },
+    {
+      "nickName": "rev_hard",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/284d6963-6c1a-4b5a-8d8c-4129b88f9c54/profile"
+    },
+    {
+      "nickName": "S.Macdonald",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/d9367a05-9bea-4e4d-b6f9-e497035588bf/profile"
+    },
+    {
+      "nickName": "ScottPuss",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/cfee38d3-db06-4ee2-9531-a2f129ec73d2/profile"
+    },
+    {
+      "nickName": "Slowdan",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/2567f008-3869-45b5-92c5-dbe6460da600/profile"
+    },
+    {
+      "nickName": "Soccmals",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/2b22c1be-02f6-4ae4-90b2-b3b58e494efc/profile"
+    },
+    {
+      "nickName": "SPDN Stefano",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/07a67d29-1153-4ccd-9349-3a7d87eb3728/profile"
+    },
+    {
+      "nickName": "Speed-Damean",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/42166905-3d33-4786-be67-b88fd8e23cef/profile"
+    },
+    {
+      "nickName": "SPL170db",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/7bda7ee8-d7cf-4996-83d0-571a8175c46a/profile"
+    },
+    {
+      "nickName": "T. Gilding",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/c481e3df-7dbc-4d5a-a821-b51c9d3d8689/profile"
+    },
+    {
+      "nickName": "The Normsk VR",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/8bdefa6c-60e0-499a-917f-cee0dc83dbd3/profile"
+    },
+    {
+      "nickName": "The__Luke",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/acf897a0-5f00-4535-bc26-68a8ebc8ec47/profile"
+    },
+    {
+      "nickName": "The_Ant702",
+      "profileUrl": "https://www.gran-turismo.com/de/gt7/user/mymenu/f073fbb3-18f6-46ee-8757-a4a2a37d94c7/profile"
+    },
+    {
+      "nickName": "TheOriginalJonT",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b5c0aafd-facf-4654-80bc-7d37d7ff9d9b/profile"
+    },
+    {
+      "nickName": "THNDR_HEEFFY",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/0c24186b-8583-4704-bf1e-af4d6c117303/profile"
+    },
+    {
+      "nickName": "Tribal Chief",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/9d37ed2d-eda7-453d-9599-d5f98775083e/profile"
+    },
+    {
+      "nickName": "Tryin'",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/4b49387d-cc4d-4a5d-9a39-ef221c3673ec/profile"
+    },
+    {
+      "nickName": "TurboBinder",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/bdf824b0-0e68-44a2-a26a-817bdd6f876e/profile"
+    },
+    {
+      "nickName": "VekiG",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/1dd08118-351d-491d-9e17-cd1890388973/profile"
+    },
+    {
+      "nickName": "Waxisthebest1",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/21f49ce2-cd12-4f1d-aae9-a848d6b321e2/profile"
+    },
+    {
+      "nickName": "Wilsonson",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/b8283098-db16-45aa-aa49-188e510bf300/profile"
+    },
+    {
+      "nickName": "Zevious Zoquis",
+      "profileUrl": "https://www.gran-turismo.com/gb/gt7/user/mymenu/bcbb78b0-b013-4555-991f-8821ecaf8feb/profile"
+    }
+  ]

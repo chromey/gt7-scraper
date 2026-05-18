@@ -16,7 +16,7 @@ if (!args.event) {
 async function scrapeEvents(args) {
   const events = ("" + args.event).split(",");
   for (const event of events) {
-    await scrapeEvent(event, args.outputFile, args.format);
+    await scrapeEvent(event, args.outputFile, args.format, args.force);
   }
 }
 
@@ -24,10 +24,10 @@ async function scrapeEvent(
   eventNumber,
   outputFile = `event_${eventNumber}.xlsx`,
   format = "xlsx",
+  force = false,
 ) {
   console.log(`Scraping event ${eventNumber}`);
-  const members = require("./leaderboard-members.json");
-  const allPages = await fetchAllPages(eventNumber, members);
+  const allPages = await fetchAllPages(eventNumber, force);
   if (format === "json") {
     await writeRawJson(allPages, eventNumber);
   } else {
@@ -36,18 +36,24 @@ async function scrapeEvent(
   console.log("Done");
 }
 
-async function fetchAllPages(eventNumber, members) {
+async function fetchAllPages(eventNumber, force) {
   const params = await getParams(eventNumber);
-
-  const firstPage = await getPage(params.id, 1, members);
+  if (!params.isEnded && params.isActive && !force) {
+    console.log(
+      "Event is still active, skipping scraping. Use --force to scrape anyway."
+    );
+    process.exit(0);
+  }
+  
+  const firstPage = await getPage(params.id, 1);
   const totalPages = firstPage.payload.pagination.total;
   const now = new Date();
   const limit = pLimit(1);
   let count = 0;
   const remainingPages = await Promise.all(
-    range(2, totalPages + 1).map((pageNumber) =>
+    range(2, 4).map((pageNumber) =>
       limit(() =>
-        getPage(params.id, pageNumber, members).then((page) => {
+        getPage(params.id, pageNumber).then((page) => {
           count++;
           process.stdout.write(
             `Fetching pages: ${Math.floor((count / totalPages) * 100)}% \r`,
@@ -98,7 +104,7 @@ function getPlayerDetails(psnId) {
   }).then((res) => res.json());
 }
 
-async function getPage(eventId, page, members) {
+async function getPage(eventId, page) {
   const res = await fetch(
     "https://admin.dg-edge.com/api/b.events.retrieveRanking",
     {
@@ -122,7 +128,7 @@ async function getPage(eventId, page, members) {
     );
     return new Promise((resolve) =>
       setTimeout(resolve, waitSeconds * 1000),
-    ).then(() => getPage(eventId, page, members));
+    ).then(() => getPage(eventId, page));
   }
   const json = await res.json();
   // debugging
@@ -132,13 +138,5 @@ async function getPage(eventId, page, members) {
     console.log("Response: ", JSON.stringify(json, null, 2));
   }
   // end of debugging
-  json.payload.list
-    .map((e) => e.player)
-    .filter((player) => members.includes(player.nickname))
-    .forEach(async (player) => {
-      const playerDetails = await getPlayerDetails(player.onlineId);
-      player.externalId = playerDetails.payload.externalId;
-      player.profileLink = playerDetails.payload.profileLink;
-    });
   return json;
 }
